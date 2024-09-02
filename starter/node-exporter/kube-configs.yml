@@ -1,0 +1,84 @@
+#Prior to executing commands in EKS, you may need to update the kube config file by running:
+aws eks --region <region>  update-kubeconfig --name <cluster-name>
+e.g. aws eks --region us-east-2  update-kubeconfig --name udacity-cluster
+
+#Create a namespace called monitoring
+kubectl create namespace monitoring
+
+#creates the secret 
+kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --namespace monitoring
+
+#Adding the helm repo
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+#Install the monitoring stack in Kubernetes using helm. You will need to include -f "path\to\values.yaml" --namespace monitoring.
+helm install \
+	[RELEASE_NAME] prometheus-community/kube-prometheus-stack \
+    -f "[Path to the values.yaml]" \
+    --namespace monitoring
+
+
+#Kubectl stuff
+kubectl get svc -A
+kubectl port-forward service/prometheus-grafana 8080:80 -n monitoring
+
+Prior to executing commands in EKS, you may need to update the kube config file by running:
+aws eks --region <region>  update-kubeconfig --name <cluster-name>
+e.g. aws eks --region us-east-2  update-kubeconfig --name udacity-cluster
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+ "dataset": {
+    "created": "Sun, 01 Sep 2024 21:57:07 GMT", 
+    "email": "myadmin@admin.com", 
+    "id": 2, 
+    "role": 0, 
+    "token": "RAUWEZ8DZSRJOKNVKDPUIJ0XW82HN59AQK5X0DYDGRXC1X0PS8", 
+    "username": "myadmin"
+  }, 
+  "status": {
+    "message": "101: Created.", 
+    "records": 1, 
+    "success": true
+
+
+
+   7 dir
+   8 helm upgrade prometheus prometheus-community/kube-prometheus-stack -f ".\values.yaml" --namespace monitoring
+   9 wget "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/values.yaml"
+  10 dir
+  11 wget "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/values.yaml"
+  12 dir
+  13 curl "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/values.yaml"
+  14 dir
+  15 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/values.yaml" -OutFile values.yaml
+  16 kubectl get svc -A
+  17 kubectl get deployments --namespace monitoring
+  18 kubectl rollout restart deployment prometheus-grafana --namespace monitoring
+  19 helm list --namespace monitoring
+  20 helm install prometheus prometheus-community/kube-prometheus-stack -f ".\blackbox-values.yaml" --namespace monitoring
+  21 helm install prometheus prometheus-community/kube-prometheus-stack -f ".\blackbox-values.yaml" --namespace monitoring
+  22 helm list --namespace monitoring
+  23 helm upgrade prometheus prometheus-community/kube-prometheus-stack -f ".\blackbox-values.yaml" --namespace monitoring
+  24 kubectl --namespace monitoring get pods -l "release=prometheus"
+  25 kubectl --namespace monitoring get pods -l "release=prometheus"
+  26 kubectl get svc prometheus-blackbox-exporter -n monitoring
+  27 kubectl get svc prometheus -n monitoring
+  28 kubectl get svc -n monitoring
+  29 kubectl get svc --all-namespaces
+  30 helm ls --all-namespaces
+  31 kubectl get deployments --all-namespaces | grep blackbox
+  32 helm install bb-exporter prometheus/prometheus-blackbox-exporter --namespace monitoring --values .\blackbox-values.yaml
+  33 helm install bb-exporter prometheus-community/prometheus-blackbox-exporter --namespace monitoring --values .\blackbox-values.yaml
+  34 kubectl get pods --namespace monitoring -l "app.kubernetes.io/name=prometheus-blackbox-exporter,app.kubernetes.io/instance=bb-exporter"
+  35  export POD_NAME=$(kubectl get pods --namespace monitoring -l "app.kubernetes.io/name=prometheus-blackbox-exporter,app.kubernetes.io/instance=bb-exporter" -o jsonpath="{.items[0].metadata.name}")
+  36 kubectl get services --namespace monitoring
+  37 kubectl describe service bb-exporter-prometheus-blackbox-exporter --namespace monitoring
+  38 helm upgrade prometheus prometheus-community/kube-prometheus-stack -f ".\values.yaml" --namespace monitoring
+  39 kubectl --namespace monitoring get pods -l "release=prometheus"
+  40 kubectl get services --namespace monitoring
+  41 helm upgrade prometheus prometheus-community/kube-prometheus-stack -f ".\values.yaml" --namespace monitoring
+
+https://hooks.slack.com/services/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
