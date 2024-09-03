@@ -1,10 +1,9 @@
 # prometheus-additional.yaml
 
 # Prometheus scrape configuration
-scrape_configs:
   - job_name: 'node_exporter'
     static_configs:
-      - targets: ['98.80.10.238:9100']
+      - targets: ['34.203.213.95:9100']
 
   - job_name: 'blackbox'
     metrics_path: /probe
@@ -12,7 +11,7 @@ scrape_configs:
       module: [http_2xx]  # Change this based on your needs
     static_configs:
       - targets:
-        - http://98.80.10.238/events  # Ensure this is the correct URL to probe
+        - http://34.203.213.95/events  # Ensure this is the correct URL to probe
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
@@ -20,5 +19,6 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: bb-exporter-prometheus-blackbox-exporter.monitoring:9115  # Assuming Blackbox Exporter service name in Kubernetes
-                     
-
+  - job_name: 'blackbox_exporter'
+    static_configs:
+      - targets: ['bb-exporter-prometheus-blackbox-exporter.monitoring:9115']

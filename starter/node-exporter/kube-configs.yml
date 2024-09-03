@@ -58,7 +58,7 @@ helm repo update
   17 kubectl get deployments --namespace monitoring
   18 kubectl rollout restart deployment prometheus-grafana --namespace monitoring
   19 helm list --namespace monitoring
-  20 helm install prometheus prometheus-community/kube-prometheus-stack -f ".\blackbox-values.yaml" --namespace monitoring
+  20 helm install prometheus prometheus-community/kube-prometheus-stack -f ".\values.yaml" --namespace monitoring
   21 helm install prometheus prometheus-community/kube-prometheus-stack -f ".\blackbox-values.yaml" --namespace monitoring
   22 helm list --namespace monitoring
   23 helm upgrade prometheus prometheus-community/kube-prometheus-stack -f ".\blackbox-values.yaml" --namespace monitoring

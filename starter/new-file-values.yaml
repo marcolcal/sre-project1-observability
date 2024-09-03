@@ -2306,11 +2306,6 @@ prometheusOperator:
         # The default webhook port is 10250 in order to work out-of-the-box in GKE private clusters and avoid adding firewall rules.
         internalPort: 10250
 
-
-      additionalScrapeConfigsSecret:
-        enabled: true
-        name: additional-scrape-configs
-        key: prometheus-additional.yaml
       ## Service account for Prometheus Operator Webhook to use.
       ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
       ##
@@ -3898,10 +3893,10 @@ prometheus:
     ## If additional scrape configurations are already deployed in a single secret file you can use this section.
     ## Expected values are the secret name and key
     ## Cannot be used with additionalScrapeConfigs
-    additionalScrapeConfigsSecret: {}
-      # enabled: false
-      # name:
-      # key:
+    additionalScrapeConfigsSecret:
+      enabled: true
+      name: additional-scrape-configs
+      key: prometheus-additional.yaml
 
     ## additionalPrometheusSecretsAnnotations allows to add annotations to the kubernetes secret. This can be useful
     ## when deploying via spinnaker to disable versioning on the secret, strategy.spinnaker.io/versioned: 'false'
